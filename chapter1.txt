@@ -1,0 +1,458 @@
+chapter 1
+
+1.1 >>>>>>>lane detection
+
+Lane detection is a well-researched 
+area of computer vision with applications in autonomous vehicles and driver support systems. This is in part because, despite the perceived
+ simplicity of finding white markings on a dark road, it can be very difficult to determine lane markings on various types of road. These difficulties
+ arrive from shadows, occlusion by other vehicles, changes in the road surfaces itself, and differing types of lane markings. A lane detection system
+ must be able to pick out all manner of markings from cluttered roadways and filter them to produce a reliable estimate of the vehicle position 
+and trajectory relative to the lane.
+By integrating the lane marking detector with the lane tracking system, we have developed a robust lane detection system that works well in
+ a variety of different conditions.  The detection is performed using steerable filters which are suitable for detecting bots dots, solid lines, and 
+dashed lines.  For solid and dashed lines, the filters can be tuned to respond to a specific lane angle, thereby removing extraneous road features.
+
+1.2>>>>>>>motivation
+
+>>lane departure warning system
+
+In road-transport terminology, a lane departure warning system is a mechanism designed to warn the driver when the vehicle begins to 
+move out of its lane (unless a turn signal is on in that direction) on freeways and arterial roads. These systems are designed to minimize accidents 
+by addressing the main causes of collisions: driver error, distractions and drowsiness.
+Since the 1990s, there have been various lane detection systems designed to suit various road conditions such as highways, urban and rural roads. 
+Currently it has shown to predominantly detect only 1 lane marking set in real time and is unable to provide additional lanes for support
+ in situations such as lane closures, road work conditions and car accidents that may obstruct the driving lane. These driver assistance systems are 
+limited in their ability to assist the driver in these conditions. so we propose a method to determine the markings of 2 lanes which can 
+be used in conjunction with a detection system to detect obstacles present in front of the driver on the road. We first determine a suitable
+ threshold for the perspective image to extract these road markings  to counter possible 
+'deviations' that may arise in this feature extraction technique. This method provides a robust approach to lane detection and works considerably
+ well in various weather conditions. The resulting images show that the method developed can be used for lane-departure warning, as well as for
+ obstacle detection, in driver assistance.
+
+>>autonomous driving
+
+  A self-driving car, also known as an autonomous vehicle , driverless car, or robo-car, is a vehicle that is capable of sensing
+ its environment and moving safely with little or no human input.   Autonomous driving is both an audacious visionary goal and a highly 
+achievable feat of technical engineering. The race to launching the 
+industry’s first fully autonomous car is accelerating, as technology companies like Apple and Waymo battle car companies Audi, Ford, Tesla, 
+Renault, Waymo and ride sharing companies Lyft and Uber to overcome technical challenges and enable an entirely new way of driving that will
+ surprise and delight users.Drivers make decisions in split-seconds, and fully autonomous cars will, too. To be safe, fully autonomous driving
+ requires real-time data transmission.Autonomous driving is changing the way we view vehicles and mobility. Next-generation cars will not just 
+enable transportation: They will also enhance passenger safety, comfort, and entertainment. 
+
+>>lane specific GPS
+
+     Intelligent Transport Solutions generally work by measuring
+traffic and applying control measures. Traditionally, measuring
+and informing traffic takes place through road-based systems,
+but this is changing now towards more in-vehicle systems.
+One of the requirements for more advanced motorway traffic
+control is that lane-specific measurements can be made, and
+vehicles can be provided with a lane-specific control measure.
+For in-car systems it is hence required that the position is
+known with an accuracy better than the width of a lane. Several
+techniques are know, for instance using differential GPS , or with the aid of vision or radar to improve
+a rough map
+
+
+
+1.3>>>>>objectives
+
+>>detect lane boundary for straight or curved lanes in real time:
+     Lane Line detection is a critical component for self driving cars and also for computer vision in general.
+ This concept is used to describe the path for self-driving cars and to avoid the risk of getting in another lane.
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+chapter 2 literature review
+
+2.1>>>>definition of terms
+
+Lane detection - draw boundaries of a lane in a single frame
+Canny edge detector - an edge detection operator that uses a multi-stage algorithm to detect a wide range of edges in images.
+ Hough transform - identification of lines in the image also identifying positions of arbitrary shapes, most commonly circles or ellipses. 
+
+2.2>>literature review
+
+>>lane detection technique
+
+First a picture of the road is acquired with the assistance of a
+camera attached on the vehicle. Next one may reduce the
+processing time by translating the image to a grayscale
+image.
+Next, the existence of disturbance captured in the image will
+interrupt the accurate detection of the edges, so one can
+activate filters to get rid of noises. Some of the filters which
+can be used are bilateral filter, gaussian filter, trilateral filter.
+There upon in order to produce an edged image, an edge
+detector can be used which makes use of canny filter to get
+the edges by using machine generated thresholding. Line
+detector can then use it for the purpose of detection. It will
+generate a left side and right side segments of the lane
+boundary. As a result, yellow and the white lanes are
+obtained using the RGB color codes.
+Techniques that are used for detecting the lanes plays a
+compelling part in technologically intelligent transport
+setup. Methods that one may make use of have been studied
+in this paper. Many of them resulted in inappropriate
+conclusions. Hence, other enrichments can also be included
+in the present approach in a way to increase the efficiency of
+the setup. In the coming future, one can change the current
+Hough Transformation so that it can sum up curved and
+straight roads respectively. This approach cannot give
+accurate results in poor
+environmental conditions like
+on hazy, cloudy, rainy and stormy days, therefore one needs to make amendments in it.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+chapter 3>>>>system analysis
+
+>>3.1 existing system
+
+
+>>3.2 proposed system
+
+The lane detection module is usually divided into two steps: 
+(1) image preprocessing and
+ (2) the establishment and matching of line lane detection model.
+
+ The first step is to read the frames in the video stream. The second step is to enter the image preprocessing module. 
+What is different from others is that in the preprocessing stage we not only process the image itself but also do colour feature extraction 
+and edge feature extraction. In order to reduce the influence of noise in the process of motion and tracking, after extracting the colour
+ features of the image, we need to use Gaussian filter to smooth the image. Then, the image is obtained by binary threshold processing and 
+morphological closure. These are the preprocessing methods mentioned in this paper.Next, we select the adaptive area of interest (ROI) in the 
+preprocessed image. The last step is lane detection. Firstly, Canny operator is used to detect the edge of lane line; then Hough transform is used 
+to detect line lane.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+chapter 4>>>system design
+
+4.1>>>unified modelling language
+
+4.1.1 Use Case diagram
+
+Use case diagrams are a set of use cases, actors, and their relationships. They represent the use case view of a system. 
+Use case diagrams are used to gather the requirements of a system including internal and external influences. These requirements are 
+mostly design requirements. Hence, when a system is analyzed to gather its functionalities, use cases are prepared and actors are identified. 
+When the initial task is complete, use case diagrams are modelled to present the outside view. In brief, the purposes of use case diagrams 
+can be said to be as follows: 
+•	Used to gather the requirements of a system. 
+•	Used to get an outside view of a system. 
+•	Identify the external and internal factors influencing the system. • Shows the interaction among the requirements. 
+
+4.1.2 Class diagram
+
+Class diagram is a static diagram. It represents the static view of an application. Class diagram is not only used for visualizing, describing, and
+ documenting different aspects of a system but also for constructing executable code of the software application.
+Class diagram describes the attributes and operations of a class and also the constraints imposed on the system. The class diagrams are widely
+ used in the modeling of object oriented systems because they are the only UML diagrams, which can be mapped directly with object-oriented
+ languages. Class diagram shows a collection of classes, interfaces, associations, collaborations, and constraints. It is also known as a structural 
+diagram
+
+4.1.3 Sequence diagram
+
+A sequence diagram is an interaction diagram. From the name, it is clear that the diagram deals with some sequences, which are the sequence 
+of messages flowing from one object to another. Interaction among the components of a system is very important from implementation and
+ execution perspective. Sequence diagram is used to visualize the sequence of calls in a system to perform a specific functionality. 
+Following things are to be identified clearly before drawing the interaction diagram • Objects taking part in the interaction. 
+•	Message flows among the objects. 
+•	The sequence in which the messages are flowing. 
+
+
+4.1.4 activity diagram
+
+Activity diagram describes the flow of control in a system. It consists of activities and links. The flow can be sequential, concurrent, or branched. 
+Activities are nothing but the functions of a system. Numbers of activity diagrams are prepared to capture the entire flow in a system. 
+Activity diagrams are used to visualize the flow of controls in a system. This is prepared to have an idea of how the system will work when executed. 
+Activity is a particular operation of the system. Activity diagrams are not only used for visualizing the dynamic nature of a system, but they
+ are also used to construct the executable system by using forward and reverse engineering techniques. 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+chapter 5>>>implementation
+
+5.1>>python programming language
+
+Python programming language : python is a widely used general-purpose, high-level programming language. It was initially designed by 
+Guido van Rossum in 1991 and developed by Python Software Foundation. It was mainly developed for emphasis on code readability, and its 
+syntax allows programmers to express concepts in fewer lines of code.Guido Van Rossum began doing its application based work in December 
+of 1989 by at Centrum Wiskunde & Informatica (CWI) which is situated in Netherland. It was started firstly as a hobby project because he was
+ looking for an interesting project to keep him occupied during Christmas. The programming language which Python is said to have succeeded 
+is ABC Programming Language, which had the interfacing with the Amoeba Operating System and had the feature of exception handling. He 
+had already helped to create ABC earlier in his career and he had seen some issues with ABC but liked most of the features. After that what he 
+did as really very clever. He had taken the syntax of ABC, and some of its good features. It came with a lot of complaints too, so he fixed those
+ issues completely and had created a good scripting language which had removed all the flaws. The inspiration for the name came from BBC’s 
+TV Show – ‘Monty Python’s Flying Circus’, as he was a big fan of the TV show and also he wanted a short, unique and slightly mysterious name for 
+his invention and hence he named it Python! He was the “Benevolent dictator for life” (BDFL) until he stepped down from the position as the 
+leader on 12th July 2018. For quite some time he used to work for Google, but currently, he is working at Dropbox.
+The language was finally released in 1991. When it was released, it used a lot fewer codes to express the concepts, when we compare it with Java, 
+C++ & C. Its design philosophy was quite good too. Its main objective is to provide code readability and advanced developer productivity. When it 
+was released it had more than enough capability to provide classes with inheritance, several core data types exception handling and functions.
+ Python 3.7.3 is the latest version.
+The two of the most used versions has to Python 2.x & 3.x. There is a lot of competition between the two and
+ both of them seem to have quite a number of different fanbase.
+
+For various purposes such as developing, scripting, generation and software testing, this language is utilized. Due to its elegance and simplicity, top technology organizations like Dropbox, Google, Quora, Mozilla, Hewlett-Packard, Qualcomm, IBM, and Cisco have implemented Python.
+ Python has come a long way to become the most popular coding language in the world. Python has just turned 30, but it still has that unknown charm & X factor which can be clearly seen from the fact that Google users have consistently searched for Python much more than they have searched for Kim Kardashian, Donald Trump, Tom Cruise etc.
+
+Python has been an inspiration for many other coding languages such as Ruby, Cobra, Boo, CoffeeScript ECMAScript, Groovy, Swift Go, OCaml, Julia etc.
+
+>>features
+Features in Python
+Easy to code: Python is a high-level programming language. 
+Free and Open Source
+Object-Oriented Language
+GUI Programming Support
+High-Level Language
+Extensible feature
+Python is Portable language
+Python is Integrated language
+
+Applications for Python
+Python is used in many application domains. Here's a sampling.
+
+The Python Package Index lists thousands of third party modules for Python.
+Web and Internet Development
+Python offers many choices for web development:
+
+Frameworks such as Django and Pyramid.
+Micro-frameworks such as Flask and Bottle.
+Advanced content management systems such as Plone and django CMS.
+Python's standard library supports many Internet protocols:
+
+HTML and XML
+JSON
+E-mail processing.
+Support for FTP, IMAP, and other Internet protocols.
+Easy-to-use socket interface.
+
+
+5.2>> computer vision
+
+Computer vision is a process by which we can understand the images and videos how they are stored and how we can manipulate and retrieve 
+data from them. Computer Vision is the base or mostly used for Artificial Intelligence. Computer-Vision is playing a major role in self-driving cars,
+ robotics as well as in photo correction apps.
+
+>>OpenCV
+
+OpenCV is the huge open-source library for the computer vision, machine learning, and image processing and now it plays a major role in 
+real-time operation which is very important in today’s systems. By using it, one can process images and videos to identify objects, faces, or even 
+handwriting of a human. When it integrated with various libraries, such as Numpuy, python is capable of processing the OpenCV array structure 
+for analysis. To Identify image pattern and its various features we use vector space and perform mathematical operations on these features.
+
+The first OpenCV version was 1.0. OpenCV is released under a BSD license and hence it’s free for both academic and commercial use.
+ It has C++, C, Python and Java interfaces and supports Windows, Linux, Mac OS, iOS and Android. When OpenCV was designed the main 
+focus was real-time applications for computational efficiency. All things are written in optimized C/C++ to take advantage of multi-core 
+processing.
+
+>>Applications of OpenCV: There are lots of applications which are solved using OpenCV, some of them are listed below
+
+face recognition
+Automated inspection and surveillance
+number of people – count (foot traffic in a mall, etc)
+Vehicle counting on highways along with their speeds
+Interactive art installations
+Anamoly (defect) detection in the manufacturing process (the odd defective products)
+Street view image stitching
+Video/image search and retrieval
+Robot and driver-less car navigation and control
+object recognition
+Medical image analysis
+Movies – 3D structure from motion
+TV Channels advertisement recognition
+
+>>OpenCV Functionality
+
+Image/video I/O, processing, display (core, imgproc, highgui)
+Object/feature detection (objdetect, features2d, nonfree)
+Geometry-based monocular or stereo computer vision (calib3d, stitching, videostab)
+Computational photography (photo, video, superres)
+Machine learning & clustering (ml, flann)
+CUDA acceleration (gpu)
+
+>>Image-Processing
+Image processing is a method to perform some operations on an image, in order to get an enhanced image and or to extract 
+some useful information from it.
+If we talk about the basic definition of image processing then “Image processing is the analysis and manipulation of a digitized
+ image, especially in order to improve its quality”.
+
+>>Digital-Image :
+An image may be defined as a two-dimensional function f(x, y), where x and y are spatial(plane) coordinates, and the amplitude of fat any pair of coordinates (x, y) is called the intensity or grey level of the image at that point.
+In another word An image is nothing more than a two-dimensional matrix (3-D in case of coloured images) which is defined by the mathematical function f(x, y) at any point is giving the pixel value at that point of an image, the pixel value describes how bright that pixel is, and what colour it should be.
+Image processing is basically signal processing in which input is an image and output is image or characteristics according to requirement associated with that image.
+Image processing basically includes the following three steps:
+
+Importing the image
+Analysing and manipulating the image
+Output in which result can be altered image or report that is based on image analysis
+
+5.3>>>techniques
+
+>>The Canny Edge Detection Technique:
+The goal of edge detection is to identify the boundaries of objects within images. A detection is used to try and find regions in an
+image where there is a sharp change in intensity. We can recognize an image as a matrix or an array of pixels. A pixel contains the
+light intensity at some location in the image. Each pixel's intensity is denoted by a numeric value that ranges from 0 to 255, an
+intensity value of zero indicates no intensity if something is completely black whereas 255 represents maximum intensity
+something being completely white. A gradient is the change in brightness over a series of pixels. A strong gradient indicates a
+steep change whereas a small gradient represents a shallow change.
+Canny Edge Detection is a popular edge detection algorithm. It was developed by John F. Canny in
+
+It is a multi-stage algorithm and we will go through each stages.
+Noise Reduction
+
+Since edge detection is susceptible to noise in the image, first step is to remove the noise in the image with a 5x5 Gaussian filter.
+ We have already seen this in previous chapters.
+
+Finding Intensity Gradient of the Image
+
+Smoothened image is then filtered with a Sobel kernel in both horizontal and vertical direction to get first derivative in horizontal direction
+ ( Gx) and vertical direction ( Gy). From these two images, we can find edge gradient and direction for each pixel as follows:
+
+Edge_Gradient(G)=G2x+G2y−−−−−−−√Angle(θ)=tan−1(GyGx)
+Gradient direction is always perpendicular to edges. It is rounded to one of four angles representing vertical, horizontal and two diagonal 
+directions.
+
+Non-maximum Suppression
+
+After getting gradient magnitude and direction, a full scan of image is done to remove any unwanted pixels which may not constitute the edge. 
+For this, at every pixel, pixel is checked if it is a local maximum in its neighborhood in the direction of gradient. Check the image below:
+
+    -------------img--------------
+Point A is on the edge ( in vertical direction). Gradient direction is normal to the edge. Point B and C are in gradient directions. 
+So point A is checked with point B and C to see if it forms a local maximum. If so, it is considered for next stage, otherwise, it is suppressed
+ ( put to zero).
+
+In short, the result you get is a binary image with "thin edges".
+
+Hysteresis Thresholding
+
+This stage decides which are all edges are really edges and which are not. For this, we need two threshold values, minVal and maxVal. 
+Any edges with intensity gradient more than maxVal are sure to be edges and those below minVal are sure to be non-edges, so discarded. 
+Those who lie between these two thresholds are classified edges or non-edges based on their connectivity. If they are connected to "sure-edge" 
+pixels, they are considered to be part of edges. Otherwise, they are also discarded. See the image below:
+
+-----------img---------------
+
+Canny Edge Detection in OpenCV
+OpenCV puts all the above in single function, cv.Canny(). We will see how to use it. First argument is our input image. Second and third
+ arguments are our minVal and maxVal respectively. Third argument is aperture_size. It is the size of Sobel kernel used for find image gradients. 
+By default it is 3. Last argument is L2gradient which specifies the equation for finding gradient magnitude. If it is True, it uses the equation 
+mentioned above which is more accurate, otherwise it uses this function: Edge_Gradient(G)=|Gx|+|Gy|. By default, it is False.
+
+>>>The Hough Transform
+The Hough Transform is an algorithm patented by Paul V. C. Hough and was originally invented to recognize complex lines in photographs 
+(Hough, 1962). Since its inception, the algorithm has been modified and enhanced to be able to recognize other shapes such as circles and 
+quadrilaterals of specific types. In order to understand how the Hough Transform algorithm works, 
+it is important to understand four concepts: edge image, the Hough Space and the mapping of edge points onto the Hough Space, an alternate 
+way to represent a line, and how lines are detected.
+An edge image is the output of an edge detection algorithm. An edge detection algorithm detects edges in an image by determining where 
+the brightness/intensity of an image changes drastically (“Edge Detection — Image Processing with Python”, 2020). Examples of edge detection 
+algorithms include: Canny, Sobel, Laplacian, etc. It is common for an edge image to be binarized meaning all of its pixel values are either a 1 or a 0. 
+Depending on your situation, either a 1 or a 0 can signify an edge pixel. For the Hough Transform algorithm, it is crucial to perform edge detection 
+first to produce an edge image which will then be used as input into the algorithm.
+The Hough Space and the Mapping of Edge Points onto the Hough Space
+
+---------------img--------------
+
+Mapping from edge points to the Hough Space.
+The Hough Space is a 2D plane that has a horizontal axis representing the slope and the vertical axis representing the intercept of a line on 
+the edge image. A line on an edge image is represented in the form of y = ax + b (Hough, 1962). One line on the edge image produces a point on 
+the Hough Space since a line is characterized by its slope a and intercept b. On the other hand, an edge point (xᵢ, yᵢ) on the edge image can have 
+an infinite number of lines pass through it. Therefore, an edge point produces a line in the Hough Space in the form of b = axᵢ + yᵢ (Leavers, 1992). 
+In the Hough Transform algorithm, the Hough Space is used to determine whether a line exists in the edge image.
+An Alternate Way to Represent a Line
+
+----------------img---------------
+
+The equation to calculate a slope of a line.There is one flaw with representing lines in the form of y = ax + b and the Hough Space with the 
+slope and intercept. In this form, the algorithm won’t be able to detect vertical lines because the slope a is undefined/infinity for vertical lines 
+(Leavers, 1992). Programmatically, this means that a computer would need an infinite amount of memory to represent all possible values of a. 
+To avoid this issue, a straight line is instead represented by a line called the normal line that passes through the origin and perpendicular to that 
+straight line. The form of the normal line is ρ = x cos(θ) + y sin(θ) where ρ is the length of the normal line and θ is the angle between the normal 
+line and the x axis.
+
+-------img---------------------
+An alternative representation of a straight line and its corresponding Hough Space.Using this, instead of representing the Hough Space with the 
+slope a and intercept b, it is now represented with ρ and θ where the horizontal axis are for the θ values and the vertical axis are for the ρ values.
+ The mapping of edge points onto the Hough Space works in a similar manner except that an edge point (xᵢ, yᵢ) now generates a cosine curve in the 
+Hough Space instead of a straight line (Leavers, 1992). This normal representation of a line eliminates the issue of unbounded value of a that arises 
+when dealing with vertical lines
+
+-------------------img------------------
+
+The process of detecting lines in an image. The yellow dots in the Hough Space indicate that lines exist and is represented by the θ and ρ pairs.
+As mentioned, an edge point produces a cosine curve in the Hough Space. From this, if we were to map all the edge points from an edge image 
+onto the Hough Space, it will generate a lot of cosine curves. If two edge points lay on the same line, their corresponding cosine curves will
+ intersect each other on a specific (ρ, θ) pair. Thus, the Hough Transform algorithm detects lines by finding the (ρ, θ) pairs that has a number of
+ intersections larger than a certain threshold. It is worth noting that this method of thresholding might not always yield the best result without 
+doing some preprocessing like neighborhood suppression on the Hough Space to remove similar lines in the edge image.
+
+5.4>>>software requirements
+ 
+The software requirements are description of features and functionalities of the target system. Requirements convey the expectations of users
+ from the software product. The requirements can be obvious or hidden, known or unknown, expected or unexpected from client’s point of view. 
+Operating System :   Windows 
+programming language          :    Python 3.6 
+Platform                :    spyder                       
+                           -----------spyder matter----------------------------------------
+
+5.5>>hardware requirements
+
+The hardware requirements are the requirements of a hardware device. Most hardware only has operating system requirements or compatibility.
+ For example, a printer may be compatible with Windows XP but not compatible with newer versions of Windows like Windows 10, Linux, 
+or the Apple macOS. 
+•	Processor    :  Any Update Processor 
+•	Ram            :   Min 4 GB 
+•	Hard Disk   :   Min 100 GB 
+                  camera
+
+5.6>>code
+
+     ------------------------code------------------
+-----------------------------------------------------
+>>>Evaluation criteria
+Lane-position detection has been studied for a few decades and results are quite
+extensive. However, there is a big gap in this research field which is the lack of
+an effective way to evaluate and compare different researches due to the variation
+in used datasets. Unlike other research topics in computer vision, such as object
+or human recognition which use almost identical datasets to test and learn, each
+lane-position detection algorithm mostly comes with its own datasets. Therefore,
+the comparison among the studies becomes much more difficult.
+
+>> Testing and Evaluation
+
+1. Processing speed: This is the criterion mentioned by all researches. It
+evaluates the ability to process data and the running speed of the system. This
+criterion is expressed by two parameters. The first one is the dimensions of
+input image frames. The second one is the amount of data that the system can
+process in an unit of time Frames Per Second (FPS). Besides, the processing
+speed depends heavily on the hardware configuration of the system, therefore
+this information also needs to be mentioned in the final testing result.
+
+2. Accuracy: Two tests are executed for this criterion. First, comparing the
+output lane marking positions from each algorithm in the same image frame.
+Second, testing the lane width outputs from each algorithm in a piece of road
+which has a constant width.
+
+3. Special cases: This is a very popular and ”open” criterion and used in most
+researches. It shows the ability of the algorithm to handle challenging scenarios. In the thesis, the workings of three algorithms are compared in different
+specific situations such as when road surface has many kinds of markings or
+when lane markings are faded or covered, etc.
+-------------------------------------------------------------------------------------------------------------------------------
+chapter 8>>>>conclusion and future scope
+
+8.1 >>>conclusion
+
+  lane  detection  system  using computer  vision-based  technologies  can efficiently detect  the  lanes  on  the  road.  Different  techniques  like
+ preprocessing,  thresholding,  perspective  transform  are fused  together  in  the  proposed  lane  detection  system. Gradient  and  HLS 
+ thresholding  detect  the  lane line  in binary images efficiently. Sliding window search is used to  recognize  the  left  and  right  lane  on  the 
+ road.  The cropping technique worked only the particular region that consists of the lane lines.  The system can be applied to any road having
+ well-marked lines  and  implemented to the embedded system for  the assistance  of Advanced  Driver  Assistance Systems  and the 
+visually impaired people for navigation to keep them in  proper  track. 
+
+8.2>>future work
+
+ In  future,  a  real-time  system  with hardware  implementation 
+ will  be  developed  that  will capture the images from the real-time scenario and detect the  lanes  based  on  the  proposed  technique
+generate a warning for the concerned persons (drivers or visually impaired people).
+*boundary conditions change with road conditions ,lighting,shadows etc
+*implement lane detection as descrete component add-on for vehicles
+
+
+
